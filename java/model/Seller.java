@@ -2,7 +2,7 @@ package model;
 
 public class Seller {
 	private int seller_id;
-	private String name,mobile,email,address_1,addres_2;
+	private String name,mobile,email,address_1,address_2;
 	public int getSeller_id() {
 		return seller_id;
 	}
@@ -34,10 +34,10 @@ public class Seller {
 		this.address_1 = address_1;
 	}
 	public String getAddres_2() {
-		return addres_2;
+		return address_2;
 	}
-	public void setAddres_2(String addres_2) {
-		this.addres_2 = addres_2;
+	public void setAddress_2(String addres_2) {
+		this.address_2 = addres_2;
 	}
 	
 	
