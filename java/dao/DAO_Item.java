@@ -58,4 +58,27 @@ public class DAO_Item {
 		}
 		return -1;
 	}
+	public boolean Delete_Item(int item_id)
+	{
+		Connection conn=DatabaseConnection.getConnection();
+		PreparedStatement preparedStatement = null;
+		String query=null;
+		query = "Delete from item_table where item_id=?";
+		try {
+			preparedStatement = conn.prepareStatement(query);
+			int rs = preparedStatement.executeUpdate();
+			if(rs==0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
 }
