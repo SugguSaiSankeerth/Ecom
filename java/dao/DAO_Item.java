@@ -43,10 +43,10 @@ public class DAO_Item {
 		try {
 			query = "SELECT item_id FROM item_table where barcode=?";
 			preparedStatement = conn.prepareStatement(query);
-			preparedStatement.setInt(1, BarCode);
+			preparedStatement.setString(1, BarCode);
 			rs = preparedStatement.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(item_id);
+				return rs.getInt("item_id");
 			}
 			else {
 				return -1;
