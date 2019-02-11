@@ -37,4 +37,25 @@ public class DAO_Item {
 		}
 		return false;
 	}
+	public int Check_Item(String BarCode) {
+		Connection conn = DatabaseConnection.getConnection();
+		PreparedStatement preparedStatement = null;
+		try {
+			query = "SELECT item_id FROM item_table where barcode=?";
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setInt(1, BarCode);
+			rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(item_id);
+			}
+			else {
+				return -1;
+			}
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }
