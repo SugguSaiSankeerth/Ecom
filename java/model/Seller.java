@@ -36,7 +36,7 @@ public class Seller {
 	public String getAddres_2() {
 		return address_2;
 	}
-	public void setAddres_2(String addres_2) {
+	public void setAddress_2(String addres_2) {
 		this.address_2 = addres_2;
 	}
 	
