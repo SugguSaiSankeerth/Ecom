@@ -2,17 +2,17 @@ package dao;
 import java.sql.*;
 
 import dbcon.DatabaseConnection;
-import model.item;
+import model.Item;
 
 public class DAO_Item {
-	String query = null;
-	ResultSet rs;
-	public boolean Add_Item(String description , float price, float discount, String name, String pic_location,
+	//String query = null;
+	//ResultSet rs;
+	public static boolean Add_Item(String description , float price, float discount, String name, String pic_location,
 			String category, String sub_category, String barcode, String dummy_1, String dummy_2, String dummy_3, String dummy_4) {
 		Connection conn = DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
 		try {
-			query = "insert into item_table(description,price,discount,name,pic_location,category,sub_category,barcode)"+" VALUES "+
+			String query = "insert into item_table(description,price,discount,name,pic_location,category,sub_category,barcode)"+" VALUES "+
 			"(?,?,?,?,?,?,?,?)";
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, description);
@@ -38,14 +38,14 @@ public class DAO_Item {
 		}
 		return false;
 	}
-	public int Check_Item(String BarCode) {
+	public static int Check_Item(String BarCode) {
 		Connection conn = DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
 		try {
-			query = "SELECT item_id FROM item_table where barcode=?";
+			String query = "SELECT item_id FROM item_table where barcode=?";
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, BarCode);
-			rs = preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("item_id");
 			}
@@ -59,11 +59,11 @@ public class DAO_Item {
 		}
 		return -1;
 	}
-	public boolean Delete_Item(int item_id)
+	public static boolean Delete_Item(int item_id)
 	{
 		Connection conn=DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
-		query = "Delete from item_table where item_id=?";
+		String query = "Delete from item_table where item_id=?";
 		try {
 			preparedStatement = conn.prepareStatement(query);
 			int rs = preparedStatement.executeUpdate();
@@ -80,15 +80,15 @@ public class DAO_Item {
 		return false;
 		
 	}
-	public item Get_Item(int Item_id) {
+	public static Item Get_Item(int Item_id) {
 		Connection conn=DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
 		try {
-			query = "SELECT * FROM item_table where item_id = ?";
-			item item_object = new item();
+			String query = "SELECT * FROM item_table where item_id = ?";
+			Item item_object = new Item();
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setInt(1, Item_id);
-			rs = preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery();
 			if(rs.next()) {
 				item_object.setDescription(rs.getString("description"));
 				item_object.setName(rs.getString("name"));

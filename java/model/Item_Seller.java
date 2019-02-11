@@ -6,6 +6,10 @@ public class Item_Seller {
 	private int seller_id;
 	private int quantity;
 	private int address;
+	
+	private Item item = null;
+	private Seller seller = null;
+	
 	public int getId() {
 		return id;
 	}
@@ -35,6 +39,18 @@ public class Item_Seller {
 	}
 	public void setAddress(int address) {
 		this.address = address;
+	}
+	public Item getItem() {
+		return item;
+	}
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	public Seller getSeller() {
+		return seller;
+	}
+	public void setSeller(Seller seller) {
+		this.seller = seller;
 	}
 	
 	
