@@ -36,6 +36,36 @@ public class DAO_Seller {
 		
 		return true;
 	}
+	public static Seller get_seller_details(int seller_id) {
+		Seller sell = new Seller();
+		//Connection conn = null;
+		ResultSet rs;
+		try {
+			Connection conn = DatabaseConnection.getConnection();
+			java.sql.PreparedStatement preparedStatement = null;			
+			String query = "select * from seller_table where id=?";
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setInt(1, seller_id);
+			rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				sell.setName(rs.getString("name"));
+				sell.setMobile(rs.getString("mobile"));
+				sell.setEmail(rs.getString("email"));
+				sell.setAddress_1(rs.getString("address_1"));
+				sell.setAddress_2(rs.getString("address_2"));
+				
+			}
+			else {
+				//item.put("result", "fail");
+				return null;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//return item.toString();
+		return sell;
+	}
 	
 
 }
