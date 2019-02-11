@@ -21,5 +21,11 @@ public class label_table {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }
