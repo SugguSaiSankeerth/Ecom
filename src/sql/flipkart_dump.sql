@@ -8,6 +8,9 @@
 --
 
 SET NAMES utf8;
+DROP Database IF EXISTS flipkartv2;
+CREATE Database flipkartv2;
+Use flipkartv2;
 
 DROP TABLE IF EXISTS `buyer_table`;
 CREATE TABLE `buyer_table` (
@@ -122,7 +125,27 @@ INSERT INTO item_table(description, price, discount, name, pic_location, categor
 ('5 litre capacity electric kettle', '899.99', '0', 'Pigeon Kettle', 'images/pigeon_kettle', 'Cooking Equipment', 'Electric Equipment', '1846930886', NULL, NULL, NULL, NULL),
 ('Cereal bowl (Pack of 4)', '250.00', '0', 'MCA Cereal bowl', 'images/cereal_bowl', 'Cooking Equipment', 'Utensils', '2424238335', NULL, NULL, NULL, NULL);
 
--- INSERT INTO item_seller(item_id, seller_id, quantity, address) VALUES
+INSERT INTO item_seller(item_id, seller_id, quantity, address) VALUES 
+(1, 1, 400, 1),
+(2, 1, 200, 1),
+(3, 2, 50, 1),
+(4, 2, 70, 1),
+(5, 3, 95, 1),
+(6, 3, 89, 1),
+(7, 3, 103, 1),
+(8, 4, 1065, 1),
+(9, 4, 1000, 1),
+(10, 4, 2056, 1);
 
--- INSERT INTO label_table(item_id, label, value) VALUES
+INSERT INTO label_table(item_id, label, value) VALUES
+(1, 'color', 'red'),
+(2, 'color', 'blue'),
+(3, 'color', 'green'),
+(4, 'color', 'red'),
+(5, 'color', 'red'),
+(6, 'color', 'blue'),
+(7, 'color', 'orange'),
+(8, 'color', 'yellow'),
+(9, 'color', 'violet'),
+(10, 'color', 'purple');
 
