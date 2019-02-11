@@ -58,7 +58,7 @@ public class DAO_Buyer {
 				buy.setAddress_1(rs.getString("address_1"));
 				buy.setAddress_2(rs.getString("address_2"));
 				buy.setEmail(rs.getString("email"));
-				
+				return buy;
 			}
 			else {
 				//item.put("result", "fail");
@@ -69,7 +69,7 @@ public class DAO_Buyer {
 			e.printStackTrace();
 		}
 		//return item.toString();
-		return buy;
+		return null;
 	}
 
 }

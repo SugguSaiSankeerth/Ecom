@@ -2,6 +2,7 @@ package dao;
 import java.sql.*;
 
 import dbcon.DatabaseConnection;
+import model.item;
 
 public class DAO_Item {
 	String query = null;
@@ -11,7 +12,7 @@ public class DAO_Item {
 		Connection conn = DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
 		try {
-			query = "insert into item_table(descriptor,price,discount,name,pic_location,category,sub_category,barcode)"+" VALUES "+
+			query = "insert into item_table(description,price,discount,name,pic_location,category,sub_category,barcode)"+" VALUES "+
 			"(?,?,?,?,?,?,?,?)";
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setString(1, description);
@@ -62,7 +63,6 @@ public class DAO_Item {
 	{
 		Connection conn=DatabaseConnection.getConnection();
 		PreparedStatement preparedStatement = null;
-		String query=null;
 		query = "Delete from item_table where item_id=?";
 		try {
 			preparedStatement = conn.prepareStatement(query);
@@ -79,6 +79,36 @@ public class DAO_Item {
 		}
 		return false;
 		
+	}
+	public item Get_Item(int Item_id) {
+		Connection conn=DatabaseConnection.getConnection();
+		PreparedStatement preparedStatement = null;
+		try {
+			query = "SELECT * FROM item_table where item_id = ?";
+			item item_object = new item();
+			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setInt(1, Item_id);
+			rs = preparedStatement.executeQuery();
+			if(rs.next()) {
+				item_object.setDescription(rs.getString("description"));
+				item_object.setName(rs.getString("name"));
+				item_object.setPic_location(rs.getString("pic_location"));
+				item_object.setCategory(rs.getString("category"));
+				item_object.setSub_category(rs.getString("sub_category"));
+				item_object.setBarcode(rs.getString("barcode"));
+				item_object.setPrice(rs.getFloat("price"));
+				item_object.setDiscount(rs.getFloat("discount"));
+				return item_object;
+			}
+			else {
+				return null;
+			}
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
