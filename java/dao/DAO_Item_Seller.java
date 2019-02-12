@@ -71,7 +71,7 @@ public class DAO_Item_Seller {
 				
 				is.add(item_sell);
 			}
-
+			return is;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,7 +80,7 @@ public class DAO_Item_Seller {
 		//return sell;
 		
 		
-		return is;
+		return null;
 	}
 
 }

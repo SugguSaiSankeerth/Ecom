@@ -34,7 +34,7 @@ public class DAO_Seller {
 		}
 		
 		
-		return true;
+		return false;
 	}
 	public static Seller get_seller_details(int seller_id) {
 		Seller sell = new Seller();
@@ -43,7 +43,7 @@ public class DAO_Seller {
 		try {
 			Connection conn = DatabaseConnection.getConnection();
 			java.sql.PreparedStatement preparedStatement = null;			
-			String query = "select * from seller_table where id=?";
+			String query = "select * from seller_table where seller_id=?";
 			preparedStatement = conn.prepareStatement(query);
 			preparedStatement.setInt(1, seller_id);
 			rs = preparedStatement.executeQuery();
