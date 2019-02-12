@@ -1,6 +1,6 @@
 package model;
 
-public class item {
+public class Item {
 	private int item_id;
 	private String description, name, pic_location, category, sub_category, barcode;
 	private float price, discount;
